@@ -1,0 +1,14 @@
+.Input {
+  padding: 0.5rem;
+  background: transparent;
+  border: 1px solid gray;
+  border-radius: 0.5rem;
+  transition: 0.2s;
+  outline-offset: 3px;
+  outline-width: 3px;
+  outline-color: transparent;
+  &:focus {
+    outline: 2px solid gray;
+    border-color: transparent;
+  }
+}
