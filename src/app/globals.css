@@ -29,6 +29,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
 }
 
 * {
@@ -46,23 +47,6 @@ a {
   html {
     color-scheme: dark;
   }
-}
-input,
-button,
-label {
-  padding: 5px 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  background: transparent;
-}
-input,
-button {
-  border: 1px solid gray;
-}
-button {
-  cursor: pointer;
-  border-color: #171717;
-  background-color: rgb(61, 61, 61);
 }
 .FirebaseConnectForm > main {
   display: flex;
