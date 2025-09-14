@@ -1,46 +1,47 @@
-// import { FirebaseApp, FirebaseOptions, initializeApp } from "firebase/app";
-// import {
-//   getDocs,
-//   collection,
-//   getFirestore,
-//   Firestore,
-// } from "firebase/firestore";
-// import { get, getDatabase, ref } from "firebase/database";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  Auth,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-// export class FirebaseApi {
-//   app: FirebaseApp;
-//   db: Firestore;
-//   constructor(config: FirebaseOptions) {
-//     this.app = initializeApp(config);
-//     this.db = getFirestore(this.app);
-//   }
-//   async getAll() {
-//     const snapshot = await getDocs(collection(this.db, ""));
-//     return snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-//   }
-//   async getAllFrom() {
-//     const db = getDatabase(this.app);
-//     const snapshot = await get(ref(db));
-//     if (snapshot.exists()) {
-//       const val = snapshot.val();
-//       console.log("val: ", val);
-//     } else {
-//       console.log("snapshot is not exist");
-//     }
-//   }
-// }
-// const firebaseConfig: FirebaseOptions = {
-//   apiKey: "AIzaSyBBK2CcDSZfM8uP-d3Flm5TZEkX-_dcwyo",
-//   authDomain: "blog-up-b3b4d.firebaseapp.com",
-//   databaseURL: "https://blog-up-b3b4d-default-rtdb.firebaseio.com",
-//   projectId: "blog-up-b3b4d",
-//   storageBucket: "blog-up-b3b4d.firebasestorage.app",
-//   messagingSenderId: "591143615531",
-//   appId: "1:591143615531:web:695fef362703594cc83e6e",
-// };
-// const connectDb = (config: FirebaseOptions) => async () => {
-//   const fbApi = new FirebaseApi(config);
-//   fbApi.getAllFrom();
-//   return fbApi;
-// };
-// export const connect = connectDb(firebaseConfig);
+// Your web app's Firebase configuration
+const firebaseConfig = {
+  apiKey: "AIzaSyD2BjRGkPyT_dnwoyHAXeRVRvnlACadf2Q",
+  authDomain: "delivery-3d5c9.firebaseapp.com",
+  databaseURL: "https://delivery-3d5c9-default-rtdb.firebaseio.com",
+  projectId: "delivery-3d5c9",
+  storageBucket: "delivery-3d5c9.appspot.com",
+  messagingSenderId: "817387200470",
+  appId: "1:817387200470:web:a3453cddb1edf0628d8e77",
+};
+
+// Initialize Firebase
+export const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+class AuthApi {
+  constructor(private auth: Auth) {}
+  async register({ email, password }: registerParams) {
+    return await createUserWithEmailAndPassword(this.auth, email, password);
+  }
+  async login({ email, password }: loginParams) {
+    return await signInWithEmailAndPassword(this.auth, email, password);
+  }
+}
+export const authApi = new AuthApi(auth);
+
+export interface registerParams {
+  email: string;
+  // name: string;
+  password: string;
+}
+
+export interface loginParams {
+  email: string;
+  password: string;
+}
