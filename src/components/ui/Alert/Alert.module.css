@@ -1,0 +1,35 @@
+.Alert {
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: 1px solid gray;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  > hr {
+    border-color: tomato;
+  }
+  >b{
+    font-size: 1.2rem;
+    letter-spacing: 2px;
+  }
+  >p{
+    font-size: .9rem;
+  }
+}
+.gray {
+  border-color: darkgray;
+  background-color: gray;
+}
+.yellow {
+  border-color: darkgray;
+  background-color: gray;
+}
+.red {
+  border-color: tomato;
+  color: tomato;
+  background-color: rgba(255, 99, 71, 0.2);
+}
+.blue {
+  border-color: darkgray;
+  background-color: gray;
+}
