@@ -1,0 +1,8 @@
+.RegisterForm {
+  width: 15rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: start;
+  justify-content: center;
+  gap: 1rem;
+}
